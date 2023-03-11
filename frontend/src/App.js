@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ShowForms from './components/ShowForms';
 import CreateForm from './components/CreateForm';
 import EditForm from './components/EditForm';
+import ReportForm from './components/ReportForm';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={ <ShowForms/>} />
           <Route path='/create' element={ <CreateForm/>} />
           <Route path='/edit/:id' element={ <EditForm/>} />
+          <Route path='/report' element={ <ReportForm/>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -8,7 +8,6 @@ const CreateForm = () => {
     const [carnet, setCarnet] = useState('')
     const [name, setName] = useState('')
     const [last_name, setLastName] = useState('')
-    const [job, setJob] = useState('')
     const [phone, setPhone] = useState('')
     const [address, setAddress] = useState('')
     const [sex, setSex] = useState('')
@@ -16,13 +15,12 @@ const CreateForm = () => {
     const [fecha_nac, setFecha_nac] = useState('')
     const [poesia, setPoesia] = useState('')
     const [fecha_dec, setFecha_dec] = useState('')
-    const [age, setAge] = useState('')
     const navigate = useNavigate()
 
     const store = async (e) => {
         e.preventDefault();
         await axios.post(endpoint, {carnet: carnet, name: name, last_name: last_name, address: address, 
-            sex: sex, carrer: carrer,phone: phone,fecha_nac: fecha_nac, poesia: poesia, fecha_dec: fecha_dec, age: age})
+            sex: sex, carrer: carrer,phone: phone,fecha_nac: fecha_nac, poesia: poesia, fecha_dec: fecha_dec})
         navigate('/')
 
     }
@@ -75,12 +73,16 @@ const CreateForm = () => {
 
                 <div className='mb-3 col-3'>
                     <label className='form-label'>Genero</label>
-                    <input 
+                    <select
                         value={sex} 
                         onChange={ (e)=> setSex(e.target.value)}
                         type='text'
                         className='form-control'
-                    />
+                    >
+                    <option value=""></option>
+                    <option value="F">Femenino</option>
+                     <option value="M">Masculino</option>
+                    </select>
                 </div>
                 <div className='mb-3 col-6'>
                     <label className='form-label'>Telefono</label>

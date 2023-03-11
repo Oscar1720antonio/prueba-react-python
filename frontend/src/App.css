@@ -41,10 +41,15 @@
   display: flex;
   align-items: center;
   justify-content: center; 
-  background-image: linear-gradient(to left, #008cff, #7B68EE, #3498db, #2eccbf, #00ff48); 
+  background-image: linear-gradient(to left, #008cff, #7B68EE, #3498db, #2eccbf, #00ffaa); 
 }
 .form{
   width: 600px;
+}
+.tableu{
+  width: 800px;
+  margin-top: 6%;
+  margin-bottom: 6%;
 }
 .form-label{
   color: #fff;
