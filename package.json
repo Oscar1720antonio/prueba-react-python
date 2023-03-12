@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-pdf-table": "^1.0.0-alfa.3"
+  }
+}

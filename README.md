@@ -1,2 +1,6 @@
-# prueba-react-python
- React Js - Python Django
+# BASIC CRUD API
+
+> Django Rest Framework
+
+
+A simple CRUD API example with Django

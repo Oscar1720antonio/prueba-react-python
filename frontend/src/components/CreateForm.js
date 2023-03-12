@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import Moment from 'react-moment';
 
 const endpoint = 'http://localhost:8000/api/form'
 const CreateForm = () => {
-
+    const date = new Date();
     const [carnet, setCarnet] = useState('')
     const [name, setName] = useState('')
     const [last_name, setLastName] = useState('')
@@ -128,7 +129,7 @@ const CreateForm = () => {
                      <option value="epica">épica</option>
                      <option value="dramatica">dramática</option>
                     </select>
-                </div>     
+                </div>       
                 <div className='mb-3 col-6'>
                         <label className='form-label'>Fecha de Declaratoria</label>
                         <input 
@@ -139,7 +140,13 @@ const CreateForm = () => {
                             className='form-control'
                         />
                 </div>
-            </div>
+                <div className='mb-3 col-6'>
+                    <Moment format="YYYY/MM/DD"  add={{ days: 3}}>{fecha_nac}</Moment>
+                </div>
+                <div className='mb-3 col-6'>
+                    <Moment element="span">{fecha_nac}</Moment>
+                </div>
+                </div>
             <button type='submit' className='btn btn-success'>Enviar</button>
         </form>
     </div>

@@ -6,16 +6,19 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 
-const endpoint = 'http://localhost:8000/api'
+const endpoint = 'http://127.0.0.1:8000/api/v1/student/'
 const ShowForms = () => {
     const [forms, setForms] = useState([])
     useEffect ( ()=> {
         getAllForms()
     }, [])
-
+   
     const getAllForms = async () => {
-        const response = await axios.get(`${endpoint}/forms`)
-        setForms(response.data)
+        console.log(endpoint)
+        await axios.get(`${endpoint}`).then((res)=>{
+            console.log(res)
+            setForms(res.data)
+        })
     }
 
     const deleteForm = async (id) => {
@@ -63,6 +66,7 @@ const ShowForms = () => {
                     ))}                
                 </tbody>
             </table>
+                            
         </div>
     </div>
   )
