@@ -54,10 +54,10 @@ const ShowForms = () => {
                             <td>{form.name}</td>
                             <td>{form.last_name}</td>
                             <td>{form.address}</td>
-                            <td>{form.sex}</td>
-                            <td>{form.carrer}</td>
-                            <td>{form.poesia}</td>
-                            <td>{form.fecha_dec}</td>
+                            <td>{form.gender}</td>
+                            <td>{form.career}</td>
+                            <td>{form.liric_gender}</td>
+                            <td>{form.registration_day}</td>
                             <td>
                                 <Link to={`/edit/${form.id}`} className='btn btn-info'>Edit</Link>
                                 <button onClick={ ()=>deleteForm(form.id)} className='btn btn-danger'>Delete</button>

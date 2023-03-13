@@ -119,10 +119,13 @@ USE_L10N = True
 USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
-
+CORS_ALLOW_HEADERS = "*"
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000', # Dominio de tu aplicación React
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+     'http://127.0.0.1:8000', # Dominio de tu aplicación React
 ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

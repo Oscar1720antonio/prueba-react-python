@@ -2,7 +2,7 @@ import axios from 'axios'
 import React,{useState, useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const endpoint = 'http://localhost:8000/api/form/'
+const endpoint = 'http://127.0.0.1:8000/api/v1/student/'
 
 const EditForm = () => {
 
@@ -11,11 +11,11 @@ const EditForm = () => {
     const [last_name, setLastName] = useState('')
     const [phone, setPhone] = useState('')
     const [address, setAddress] = useState('')
-    const [sex, setSex] = useState('')
-    const [carrer, setCarrer] = useState('')
-    const [fecha_nac, setFecha_nac] = useState('')
-    const [poesia, setPoesia] = useState('')
-    const [fecha_dec, setFecha_dec] = useState('')
+    const [gender, setGender] = useState('')
+    const [career, setCareer] = useState('')
+    const [birthday, setBirthday] = useState('')
+    const [liric_gender, setLiric_gender] = useState('')
+    const [registration_day, setRegistration_day] = useState('')
     const navigate = useNavigate()
     const {id} = useParams()
 
@@ -23,7 +23,7 @@ const EditForm = () => {
         e.preventDefault();
         await axios.put(`${endpoint}${id}`, {
             carnet: carnet, name: name, last_name: last_name, address: address, 
-            sex: sex, carrer: carrer,phone: phone,fecha_nac: fecha_nac, poesia: poesia, fecha_dec: fecha_dec
+            gender: gender, career: career,phone: phone,birthday: birthday, liric_gender: liric_gender, registration_day: registration_day
         })
         navigate('/')
     }
@@ -32,16 +32,17 @@ const EditForm = () => {
 
         const getFormById = async () => {
             const response = await axios.get(`${endpoint}${id}`)
+            console.log('esta es la data:  ',response.data)
             setCarnet(response.data.carnet)
             setName(response.data.name)
             setLastName(response.data.last_name)
             setPhone(response.data.phone)
             setAddress(response.data.address)
-            setSex(response.data.sex)
-            setCarrer(response.data.carrer)
-            setFecha_nac(response.data.fecha_nac)
-            setPoesia(response.data.poesia)
-            setFecha_dec(response.data.fecha_dec)
+            setGender(response.data.gender)
+            setCareer(response.data.career)
+            setBirthday(response.data.birthday)
+            setLiric_gender(response.data.liric_gender)
+            setRegistration_day(response.data.registration_day)
         }
         getFormById()
         
@@ -97,8 +98,8 @@ const EditForm = () => {
                 <div className='mb-3 col-3'>
                     <label className='form-label'>Genero</label>
                     <select
-                        value={sex} 
-                        onChange={ (e)=> setSex(e.target.value)}
+                        value={gender} 
+                        onChange={ (e)=> setGender(e.target.value)}
                         type='text'
                         className='form-control'
                     >
@@ -119,8 +120,8 @@ const EditForm = () => {
                 <div className='mb-3 col-6'>
                 <label className='form-label'>Fecha Nacimiento</label>
                 <input 
-                    value={fecha_nac} 
-                    onChange={ (e)=> setFecha_nac(e.target.value)}
+                    value={birthday} 
+                    onChange={ (e)=> setBirthday(e.target.value)}
                     type='date'
                     className='form-control'
                 />
@@ -128,8 +129,8 @@ const EditForm = () => {
                 <div className='mb-3 col-12'>
                     <label className='form-label'>Carrera</label>
                     <input 
-                        value={carrer} 
-                        onChange={ (e)=> setCarrer(e.target.value)}
+                        value={career} 
+                        onChange={ (e)=> setCareer(e.target.value)}
                         type='text'
                         className='form-control'
                     />
@@ -140,8 +141,8 @@ const EditForm = () => {
                 <div className='mb-3 col-6'>
                     <label className='form-label'>Tipo de Poesia</label>
                     <select 
-                        value={poesia} 
-                        onChange={ (e)=> setPoesia(e.target.value)}
+                        value={liric_gender} 
+                        onChange={ (e)=> setLiric_gender(e.target.value)}
                         type='select'
                         className='form-control'
                     >
@@ -154,8 +155,8 @@ const EditForm = () => {
                 <div className='mb-3 col-6'>
                         <label className='form-label'>Fecha de Declaratoria</label>
                         <input 
-                            value={fecha_dec} 
-                            onChange={ (e)=> setFecha_dec(e.target.value)}
+                            value={registration_day} 
+                            onChange={ (e)=> setRegistration_day(e.target.value)}
                             type='date'
                             disabled = 'disabled'
                             className='form-control'

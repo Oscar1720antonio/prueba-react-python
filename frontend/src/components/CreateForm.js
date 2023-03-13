@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Moment from 'react-moment';
 
-const endpoint = 'http://localhost:8000/api/form'
+const endpoint = 'http://127.0.0.1:8000/api/v1/student/'
 const CreateForm = () => {
     const date = new Date();
     const [carnet, setCarnet] = useState('')
@@ -11,19 +11,19 @@ const CreateForm = () => {
     const [last_name, setLastName] = useState('')
     const [phone, setPhone] = useState('')
     const [address, setAddress] = useState('')
-    const [sex, setSex] = useState('')
-    const [carrer, setCarrer] = useState('')
-    const [fecha_nac, setFecha_nac] = useState('')
-    const [poesia, setPoesia] = useState('')
-    const [fecha_dec, setFecha_dec] = useState('')
+    const [gender, setGender] = useState('')
+    const [career, setCareer] = useState('')
+    const [birthday, setBirthday] = useState('')
+    const [liric_gender, setLiric_gender] = useState('')
+    const [registration_day, setRegistration_day] = useState('')
     const navigate = useNavigate()
 
     const store = async (e) => {
         e.preventDefault();
         await axios.post(endpoint, {carnet: carnet, name: name, last_name: last_name, address: address, 
-            sex: sex, carrer: carrer,phone: phone,fecha_nac: fecha_nac, poesia: poesia, fecha_dec: fecha_dec})
+            gender: gender, career: career,phone: phone,birthday: birthday, liric_gender: liric_gender, registration_day: registration_day})
         navigate('/')
-
+        console.log(endpoint)
     }
   return (
     <div className="container1">
@@ -75,9 +75,8 @@ const CreateForm = () => {
                 <div className='mb-3 col-3'>
                     <label className='form-label'>Genero</label>
                     <select
-                        value={sex} 
-                        onChange={ (e)=> setSex(e.target.value)}
-                        type='text'
+                        value={gender} 
+                        onChange={ (e)=> setGender(e.target.value)}
                         className='form-control'
                     >
                     <option value=""></option>
@@ -97,8 +96,8 @@ const CreateForm = () => {
                 <div className='mb-3 col-6'>
                 <label className='form-label'>Fecha Nacimiento</label>
                 <input 
-                    value={fecha_nac} 
-                    onChange={ (e)=> setFecha_nac(e.target.value)}
+                    value={birthday} 
+                    onChange={ (e)=> setBirthday(e.target.value)}
                     type='date'
                     className='form-control'
                 />
@@ -106,8 +105,8 @@ const CreateForm = () => {
                 <div className='mb-3 col-12'>
                     <label className='form-label'>Carrera</label>
                     <input 
-                        value={carrer} 
-                        onChange={ (e)=> setCarrer(e.target.value)}
+                        value={career} 
+                        onChange={ (e)=> setCareer(e.target.value)}
                         type='text'
                         className='form-control'
                     />
@@ -119,32 +118,32 @@ const CreateForm = () => {
                 <div className='mb-3 col-6'>
                     <label className='form-label'>Tipo de Poesia</label>
                     <select 
-                        value={poesia} 
-                        onChange={ (e)=> setPoesia(e.target.value)}
+                        value={liric_gender} 
+                        onChange={ (e)=> setLiric_gender(e.target.value)}
                         type='select'
                         className='form-control'
                     >
                     <option value=""></option>
-                    <option value="lirica">lírica</option>
-                     <option value="epica">épica</option>
-                     <option value="dramatica">dramática</option>
+                    <option value="Lirica">lírica</option>
+                     <option value="Epica">épica</option>
+                     <option value="Dramatica">dramática</option>
                     </select>
                 </div>       
                 <div className='mb-3 col-6'>
                         <label className='form-label'>Fecha de Declaratoria</label>
                         <input 
-                            value={fecha_dec} 
-                            onChange={ (e)=> setFecha_dec(e.target.value)}
+                            value={registration_day} 
+                            onChange={ (e)=> setRegistration_day(e.target.value)}
                             type='date'
-                            disabled = 'disabled'
+                            //disabled = 'disabled'
                             className='form-control'
                         />
                 </div>
                 <div className='mb-3 col-6'>
-                    <Moment format="YYYY/MM/DD"  add={{ days: 3}}>{fecha_nac}</Moment>
+                    <Moment format="YYYY/MM/DD"  add={{ days: 3}}>{birthday}</Moment>
                 </div>
                 <div className='mb-3 col-6'>
-                    <Moment element="span">{fecha_nac}</Moment>
+                    <Moment element="span">{birthday}</Moment>
                 </div>
                 </div>
             <button type='submit' className='btn btn-success'>Enviar</button>
