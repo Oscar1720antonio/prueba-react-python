@@ -24,7 +24,7 @@ SECRET_KEY = '8erw#!8iy_9tjjqdlelb&7z&*&7cn1+b5-$ii_kfun^b^(3s0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+## Configuracion para ingreso de api
 ALLOWED_HOSTS = ['http://127.0.0.1:8000','*', 'localhost:3000', '127.0.0.1:3000']
 
 
@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
+    #### configuracion de cors para metodo http
     'corsheaders',
     # 3rd party
+
     'rest_framework',
     
 ]
@@ -55,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 ALLOWED_HOSTS = ['*']
-
+##### LISTA DE ACCESOS DE SEGURIDAD
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -128,11 +130,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+################# Configuracion de cors para implementacion de api
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = "*"
-
+################# Metodos permitidos
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",

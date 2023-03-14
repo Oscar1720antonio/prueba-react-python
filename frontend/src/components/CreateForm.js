@@ -2,8 +2,9 @@ import axios from 'axios'
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Moment from 'react-moment';
-
+/// endpoint de la api en django
 const endpoint = 'http://127.0.0.1:8000/api/v1/student/'
+// funcion de creacion de formulario
 const CreateForm = () => {
     const date = new Date();
     const [carnet, setCarnet] = useState('')
@@ -17,7 +18,7 @@ const CreateForm = () => {
     const [liric_gender, setLiric_gender] = useState('')
     const [registration_day, setRegistration_day] = useState('')
     const navigate = useNavigate()
-
+    // variable de envio en este caso post
     const store = async (e) => {
         e.preventDefault();
         await axios.post(endpoint, {carnet: carnet, name: name, last_name: last_name, address: address, 
@@ -25,6 +26,7 @@ const CreateForm = () => {
         navigate('/')
         console.log(endpoint)
     }
+    //funcion de navegacion en boton regresar
     const goBack = () => {
         navigate(-1);
       };

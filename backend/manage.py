@@ -3,7 +3,7 @@
 import os
 import sys
 
-
+#### modulo de creacion de framework
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'storage.settings')
     try:

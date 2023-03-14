@@ -7,17 +7,20 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 
 const endpoint = 'http://127.0.0.1:8000/api/v1/student/'
+//esta es la variable para poder llenar la grid
 const ReportForms = () => {
     const [rowData, setRowData] = useState([])
     useEffect ( ()=> {
         getAllForms()
     }, [])
+    // esta es una constante de navegacion
     const navigate = useNavigate()
+    // obtengo el objeto con toda la informacion de la api
     const getAllForms = async () => {
         const response = await axios.get(`${endpoint}`)
         setRowData(response.data)
     }
-
+    // Construyo las columnas para poder clasificar, editar, filtrar la informacion
     const [columnDefs] = useState([
         {
           width: 20,
@@ -33,29 +36,13 @@ const ReportForms = () => {
         { width: 150, headerName: 'Genero Poesia', field: 'liric_gender',filter: true,floatingFilter: true},
         { width: 120,headerName: 'Fecha Inscripcion', field: 'registration_day',filter: true,floatingFilter: true},
       ]);
-     
+    //funcion para boton de regreso 
     const goBack = () => {
         navigate(-1);
       };
   return (
     <div className="container1">
-           <div className="tableu">
-                           {/* <tbody>
-                { forms.map( (form) => (
-                    <tr key={form.id}>
-                        <td>{form.name}</td>
-                        <td>{form.last_name}</td>
-                        <td>{form.job}</td>
-                        <td>{form.phone}</td>
-                        <td>{form.address}</td>
-                        <td>{form.age}</td>
-                        <td>
-                            <Link to={`/edit/${form.id}`} className='btn btn-info'>Edit</Link>
-                        </td>
-                    </tr>
-                ))}                
-                    </tbody> */}
-                    
+           <div className="tableu">                 
                     <h2>Alumnos Inscritos Para Declamar</h2>
                     <div className="ag-theme-alpine" style={{height: 400, width: 1000}}>
                     <AgGridReact

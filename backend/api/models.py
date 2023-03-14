@@ -1,7 +1,8 @@
 from django.db import models
 
-
+##### ACA CREAMOS EL MODELO QUE NECESITAMOS, LA TABLA, CON LA CONFIGURACION EXACTA
 class Student(models.Model):
+    ######################### CADA UNO DE LOS CAMPOS OBLIGATORIOS, COMO ASI TAMBIEN EL MAXIMO DE CARACTERES
     carnet = models.CharField(unique=True, max_length=6)
     name = models.CharField(max_length=255)
     last_name  = models.CharField(max_length=255, null=True, default=None, blank = True)

@@ -2,10 +2,10 @@ import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //se importa el componente
-import ShowForms from './components/ShowForms';
-import CreateForm from './components/CreateForm';
-import EditForm from './components/EditForm';
-import ReportForm from './components/ReportForm';
+import ShowForms from './components/ShowForms'; //COMPONENTE DE VER TODOS LOS FORMULARIOS
+import CreateForm from './components/CreateForm'; // CREAR EL FORMULARIO
+import EditForm from './components/EditForm'; // EDITAR EL FORMULARIO
+import ReportForm from './components/ReportForm'; // CREAR REPORTE DE FORMULARIOS
 /* import PdfForm from './components/PdfForm'; */
 function App() {
   return (

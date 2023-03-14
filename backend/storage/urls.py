@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    ####### Api de administracion
+    path('admin/', admin.site.urls), 
+    ############### Api de formulario de estudiantes
     path('api/v1/', include('api.urls'))
 ]
