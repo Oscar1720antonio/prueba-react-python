@@ -21,18 +21,21 @@ const EditForm = () => {
 
     const update = async (e) => {
         e.preventDefault();
+        console.log('esta es la data:  ',endpoint,id)
         await axios.put(`${endpoint}${id}`, {
             carnet: carnet, name: name, last_name: last_name, address: address, 
             gender: gender, career: career,phone: phone,birthday: birthday, liric_gender: liric_gender, registration_day: registration_day
         })
         navigate('/')
     }
-
+    const goBack = () => {
+        navigate(-1);
+      };
     useEffect( () =>{
 
         const getFormById = async () => {
-            const response = await axios.get(`${endpoint}${id}`)
-            console.log('esta es la data:  ',response.data)
+            const response = await axios.get(`${endpoint}${id}/`)
+            
             setCarnet(response.data.carnet)
             setName(response.data.name)
             setLastName(response.data.last_name)
@@ -163,7 +166,14 @@ const EditForm = () => {
                         />
                 </div>
             </div>
-            <button type='submit' className='btn btn-success'>Enviar</button>
+            <div className="row">
+                <div className='mb-3 col-6'>
+                    <button onClick={goBack} className="btn btn-outline-warning">Cancelar</button>
+                </div>
+                <div className='mb-3 col-6'>
+                    <button type='submit' className='btn btn-outline-danger'>Enviar</button>
+                </div>
+            </div>
         </form>
 
     </div>

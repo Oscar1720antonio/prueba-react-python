@@ -30,13 +30,17 @@ const ShowForms = () => {
   return (
     <div className="container1">
         <div className="tableu">
-            <div className='col-12'>
-                <Link to="/create" className='btn btn-success  mt-2 mb-2 text-white'>Crear Formulario</Link>
-                <Link to="/report" className='btn btn-success  mt-2 mb-2 text-white'>Reporte de Formulario</Link>
+            <div className="row">
+                    <div className='mb-3 col-6'>
+                        <Link to="/report" className='btn btn-outline-warning  mt-2 mb-2 text-white'>Reporte de Formulario</Link>
+                    </div>
+                    <div className='mb-3 col-6'>
+                        <Link to="/create" className='btn btn-outline-success  mt-2 mb-2 text-white'>Crear Formulario</Link>
+                    </div>
             </div>
-            <table className='table table-striped'>
-                <thead className='bg-primary text-white'>
-                    <tr>
+            <table className='table'>
+                <thead >
+                    <tr class="bg-warning text-white">
                         <th>Carnet</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
@@ -45,9 +49,10 @@ const ShowForms = () => {
                         <th>Carrera</th>
                         <th>Tipo Poesia</th>
                         <th>Declamacion</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='text-white'>
                     { forms.map( (form) => (
                         <tr key={form.id}>
                             <td>{form.carnet}</td>
@@ -59,8 +64,8 @@ const ShowForms = () => {
                             <td>{form.liric_gender}</td>
                             <td>{form.registration_day}</td>
                             <td>
-                                <Link to={`/edit/${form.id}`} className='btn btn-info'>Edit</Link>
-                                <button onClick={ ()=>deleteForm(form.id)} className='btn btn-danger'>Delete</button>
+                                <Link to={`/edit/${form.id}`} className='btn btn-outline-primary'>Edit</Link>
+                               {/*  <button onClick={ ()=>deleteForm(form.id)} className='btn btn-danger'>Delete</button> */}
                             </td>
                         </tr>
                     ))}                

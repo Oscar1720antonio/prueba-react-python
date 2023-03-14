@@ -25,6 +25,9 @@ const CreateForm = () => {
         navigate('/')
         console.log(endpoint)
     }
+    const goBack = () => {
+        navigate(-1);
+      };
   return (
     <div className="container1">
         
@@ -139,14 +142,21 @@ const CreateForm = () => {
                             className='form-control'
                         />
                 </div>
-                <div className='mb-3 col-6'>
+               {/*  <div className='mb-3 col-6'>
                     <Moment format="YYYY/MM/DD"  add={{ days: 3}}>{birthday}</Moment>
                 </div>
                 <div className='mb-3 col-6'>
                     <Moment element="span">{birthday}</Moment>
+                </div> */}
                 </div>
+            <div className="row">
+                <div className='mb-3 col-6'>
+                    <button onClick={goBack} className="btn btn-outline-warning">Cancelar</button>
                 </div>
-            <button type='submit' className='btn btn-success'>Enviar</button>
+                <div className='mb-3 col-6'>
+                    <button type='submit' className='btn btn-outline-danger'>Enviar</button>
+                </div>
+            </div>
         </form>
     </div>
   )

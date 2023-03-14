@@ -1,39 +1,42 @@
 import React, {useEffect, useCallback, useMemo, useRef, useState} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 
-const endpoint = 'http://localhost:8000/api'
+const endpoint = 'http://127.0.0.1:8000/api/v1/student/'
 const ReportForms = () => {
-    const [forms, setForms] = useState([])
+    const [rowData, setRowData] = useState([])
     useEffect ( ()=> {
         getAllForms()
     }, [])
-
+    const navigate = useNavigate()
     const getAllForms = async () => {
-        const response = await axios.get(`${endpoint}/forms`)
-        setForms(response.data)
+        const response = await axios.get(`${endpoint}`)
+        setRowData(response.data)
     }
 
     const [columnDefs] = useState([
         {
-          width: 100,
+          width: 20,
           checkboxSelection: true,
           headerCheckboxSelection: true,
         },
-        { field: 'make' },
-        { field: 'model' },
-        { field: 'price' },
+        { width: 100,headerName: 'Carnet', field: 'carnet', },
+        { width: 100,headerName: 'Nombre', field: 'name', },
+        { width: 100, headerName: 'Apellidos', field: 'last_name',},
+        { width: 120, headerName: 'Direccion', field: 'address',},
+        { width: 100,headerName: 'Genero', field: 'gender',filter: true,floatingFilter: true},
+        { width: 180, headerName: 'Carrera', field: 'career',filter: true,floatingFilter: true},
+        { width: 150, headerName: 'Genero Poesia', field: 'liric_gender',filter: true,floatingFilter: true},
+        { width: 120,headerName: 'Fecha Inscripcion', field: 'registration_day',filter: true,floatingFilter: true},
       ]);
-    const [rowData] = useState([
-        {make: "Toyota", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxster", price: 72000}
-    ]);  
- 
+     
+    const goBack = () => {
+        navigate(-1);
+      };
   return (
     <div className="container1">
            <div className="tableu">
@@ -54,18 +57,23 @@ const ReportForms = () => {
                     </tbody> */}
                     
                     <h2>Alumnos Inscritos Para Declamar</h2>
-                    <div className="ag-theme-alpine" style={{height: 400, width: 750}}>
+                    <div className="ag-theme-alpine" style={{height: 400, width: 1000}}>
                     <AgGridReact
                         rowData={rowData}
                         columnDefs={columnDefs}
                         rowSelection={'multiple'}>
                     </AgGridReact>
                 </div>
-                <div className='col-4'>
-                    <Link to="/print" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Imprimir Reporte</Link>
+                <div className="row">
+                    <div className='mb-3 col-6'>
+                        <button onClick={goBack} className="btn btn-outline-warning">Cancelar</button>
+                    </div>
+                    <div className='mb-3 col-6'>
+                        <Link to="/print" className='btn btn-outline-success'>Imprimir Reporte</Link>
+                    </div>
                 </div>
            </div>
- 
+           
 
     </div>
   )

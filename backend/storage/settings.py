@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
+    'corsheaders',
     # 3rd party
     'rest_framework',
-    'corsheaders'
+    
 ]
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,9 +52,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-
 ]
+
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+
 
 ROOT_URLCONF = 'storage.urls'
 
@@ -119,15 +129,31 @@ USE_L10N = True
 USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = "*"
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://localhost:8000',
-     'http://127.0.0.1:8000', # Dominio de tu aplicación React
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+   'rest_framework.permissions.AllowAny',
+    ]
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3080",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+trailing_slash = True
